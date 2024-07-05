@@ -1,11 +1,4 @@
-## How to Install Nominatim 4.2.0 on Ubuntu Server 22.04 - Own Geocoder API
-## Watch YouTube Video Link: https://youtu.be/75Me-_3heM4
-## Like - Share - Subscribe
-## Make Donation - https://paypal.me/SachinSamy?country.x=IN&locale.x=en_GB
-## For any support contact:
-## Skype: Sachin.Samy
-## WhatsApp: https://wa.me/918527117770
-+++++++++++++++++++++++++
+++++++++++++++++++++
 
 sudo apt-get update
 
@@ -88,12 +81,9 @@ export PROJECT_DIR=/srv/nominatim/nominatim-planet
 
 cd $PROJECT_DIR
 wget https://www.nominatim.org/data/wikimedia-importance.sql.gz
-wget https://download.geofabrik.de/asia/india/north-eastern-zone-latest.osm.pbf
+wget https://download.geofabrik.de/south-america/chile-latest.osm.bz2
 
-## You can download your contory data from the following link: https://download.geofabrik.de
-
-## wget https://download.geofabrik.de/asia/india-latest.osm.pbf
-
+## Bajar los mapas en este  link: https://download.geofabrik.de
 
 sudo -u postgres -i
 nano /etc/postgresql/14/main/postgresql.conf
@@ -113,10 +103,7 @@ sudo systemctl restart postgresql
 sudo -u postgres -i
 cd
 
-## nominatim import --osm-file /srv/nominatim/nominatim-planet/india-latest.osm.pbf 2>&1 | tee setup.log
-
-nominatim import --osm-file /srv/nominatim/nominatim-planet/north-eastern-zone-latest.osm.pbf 2>&1 | tee setup.log
-
+nominatim import --osm-file /srv/nominatim/nominatim-planet/chile-latest.osm.bz2 2>&1 | tee setup.log
 
 nominatim admin --check-database
 nominatim import --continue indexing
@@ -151,10 +138,10 @@ sudo systemctl restart apache2
 systemctl status apache2
 systemctl restart postgresql
 
-## Instead of using 192.168.2.207 you should use your server ip"
+## la ip del servidor es http://64.225.8.51/  realizar las pruebas"
 
-http://192.168.2.207/nominatim/status.php
-http://192.168.2.207/nominatim/reverse.php?format=jsonv2&lat=25.8472&lon=92.5743
+http://64.225.8.51/nominatim/status.php
+http://64.225.8.51/nominatim/reverse.php?format=jsonv2&lat=-33.47937669254656&lon=-70.65749799603431
 
 SSL configuration if required
 First bind/point the your domain name with the server IP where your installed the nominatim.
@@ -167,12 +154,6 @@ Request certificate:
 
 certbot --apache --agree-tos --email youremailaddress@domain.com --no-eff-email -d YourDomain.com
 
-
 +++++++++++++++++++++++++
-## How to Install Nominatim 4.2.0 on Ubuntu Server 22.04 - Own Geocoder API
-## Watch YouTube Video Link: https://youtu.be/75Me-_3heM4
-## Like - Share - Subscribe
-## Make Donation - https://paypal.me/SachinSamy?country.x=IN&locale.x=en_GB
-## For any support contact:
-## Skype: Sachin.Samy
-## WhatsApp: https://wa.me/918527117770
+## Como instalar Nominatim 4.2.0 on Ubuntu Server 22.04 - Own Geocoder API
+## WhatsApp: https://wa.me/56974764475
